@@ -1,0 +1,33 @@
+<div class="container">
+	<div>
+		<img id="logo-results" src="/img/google.png" alt="google">
+	</div>
+<div>
+	<form action="/results" method="post">
+		<input name="search" type="text">
+		<button>Search</button>
+	</form>
+</div>
+</div>
+<hr>
+
+<div class="result-area">
+	<br><small id="total-results">{{filtered.length}} results</small>
+	<div class="result">
+		{{#each filtered as |result|}}
+		<p><small>{{result.urlDescription}}</small></p>
+		<h2><a href="{{result.url}}" target="_blank">{{result.title}}</a></h2>
+		<div class="main-content">
+			<p>{{result.description}}</p>
+				{{#each links as |link|}}
+			<table>
+				<tbody>
+					<tr>
+						<td><a href="{{link.url}}">{{link.title}}</a></td>
+					</tr>
+				</tbody>
+			</table>
+			{{/each}}
+		</div>
+		{{/each}}
+	</div>
